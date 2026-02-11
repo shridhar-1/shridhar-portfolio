@@ -15,20 +15,31 @@
         }
 
         body {
-            /* 1. BACKGROUND IMAGE SETTINGS */
-            /* This puts shridharm.jpg in the back with a dark tint so text is readable */
-            background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), url('shridharm.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed; /* Cool effect: Image stays still when you scroll */
+            /* No static image anymore - the video handles it! */
+            background-color: #0f172a; 
             color: #e2e8f0;
             line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- THE BACKGROUND VIDEO --- */
+        #bg-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -2; /* Puts it way back */
+            object-fit: cover; /* Covers the whole screen */
+            filter: brightness(40%); /* Darkens video so text is readable */
         }
 
         .container {
             max-width: 900px;
             margin: 50px auto;
             padding: 20px;
+            position: relative;
+            z-index: 1; /* Puts content in front of video */
         }
 
         /* --- PROFILE SECTION --- */
@@ -42,18 +53,14 @@
             width: 180px;
             height: 180px;
             border-radius: 50%;
-            border: 4px solid #38bdf8; /* Cyan Border */
-            box-shadow: 0 0 25px rgba(56, 189, 248, 0.6); /* Glowing Effect */
+            border: 4px solid #38bdf8;
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.6);
             object-fit: cover;
             margin-bottom: 20px;
         }
 
-        h1 {
-            font-size: 2.5rem;
-            color: #fff;
-            margin-bottom: 10px;
-        }
-
+        h1 { font-size: 2.5rem; color: #fff; margin-bottom: 10px; }
+        
         .tagline {
             color: #38bdf8;
             font-size: 1.2rem;
@@ -61,20 +68,20 @@
             letter-spacing: 1px;
         }
 
-        /* --- "30 MARKS" CONTENT BOXES --- */
+        /* --- CONTENT BOXES --- */
         .content-box {
-            background: rgba(30, 41, 59, 0.7); /* Semi-transparent glass */
-            border: 1px solid #334155;
+            background: rgba(15, 23, 42, 0.6); /* More transparent for video */
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 15px;
             padding: 30px;
             margin-bottom: 30px;
-            backdrop-filter: blur(10px); /* Blur effect behind the box */
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            backdrop-filter: blur(5px); /* Blurs the video behind the text */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             transition: transform 0.3s ease;
         }
 
         .content-box:hover {
-            transform: translateY(-5px); /* Moves up slightly on hover */
+            transform: translateY(-5px);
             border-color: #38bdf8;
         }
 
@@ -86,15 +93,10 @@
             font-size: 1.5rem;
         }
 
-        p {
-            margin-bottom: 15px;
-            color: #cbd5e1;
-            text-align: justify;
-        }
+        p { margin-bottom: 15px; color: #cbd5e1; text-align: justify; }
 
-        /* --- SKILL TAGS --- */
         .skill-tag {
-            background: #0f172a;
+            background: rgba(56, 189, 248, 0.1);
             color: #38bdf8;
             padding: 8px 15px;
             border-radius: 20px;
@@ -105,7 +107,6 @@
             font-weight: bold;
         }
 
-        /* --- FOOTER / CONTACT --- */
         .contact-btn {
             display: inline-block;
             background: #38bdf8;
@@ -118,12 +119,8 @@
             transition: 0.3s;
         }
 
-        .contact-btn:hover {
-            background: #fff;
-            box-shadow: 0 0 15px #fff;
-        }
+        .contact-btn:hover { background: #fff; box-shadow: 0 0 15px #fff; }
 
-        /* Mobile Responsive */
         @media (max-width: 600px) {
             h1 { font-size: 2rem; }
             .container { padding: 10px; margin-top: 20px; }
@@ -137,10 +134,14 @@
 </head>
 <body>
 
+    <video autoplay muted loop playsinline id="bg-video">
+        <source src="bg.mp4" type="video/mp4">
+    </video>
+
     <div class="container">
         
         <div class="profile-header">
-            <img src="my photo technical.jpg" alt="Shridhar Madival" class="profile-img">
+            <img src="technical.jpg" alt="Shridhar Madival" class="profile-img">
             <h1>Shridhar Madival</h1>
             <p class="tagline">ECE Student | Developer | GATE Aspirant</p>
             <a href="https://github.com/shridhar-1" class="contact-btn">View My GitHub</a>
@@ -158,9 +159,7 @@
 
         <div class="content-box">
             <h2>⚡ Technical Arsenal</h2>
-            <p>
-                As a technical student, I specialize in bridging the gap between hardware and software. My core strengths include:
-            </p>
+            <p>As a technical student, I specialize in bridging the gap between hardware and software. My core strengths include:</p>
             <div style="margin-top: 15px;">
                 <span class="skill-tag">Analog Electronics</span>
                 <span class="skill-tag">Network Analysis</span>
