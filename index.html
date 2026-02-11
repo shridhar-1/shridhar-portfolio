@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shridhar Madival | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Shridhar Madival | GATE Aspirant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* --- 1. DARK THEME SETTINGS --- */
+        /* --- GLOBAL SETTINGS --- */
         * {
             margin: 0;
             padding: 0;
@@ -15,143 +15,189 @@
         }
 
         body {
-            background-color: #0f172a; /* Dark Navy Blue */
+            /* 1. BACKGROUND IMAGE SETTINGS */
+            /* This puts shridharm.jpg in the back with a dark tint so text is readable */
+            background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), url('shridharm.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Cool effect: Image stays still when you scroll */
             color: #e2e8f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            line-height: 1.6;
         }
 
-        /* --- 2. THE MAIN CARD --- */
-        .profile-card {
-            background: #1e293b;
-            width: 90%;
-            max-width: 400px;
-            border-radius: 20px;
-            padding: 40px;
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        /* --- PROFILE SECTION --- */
+        .profile-header {
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            border: 1px solid #334155;
-            animation: fadeIn 1.5s ease-in-out;
+            margin-bottom: 50px;
+            animation: fadeInDown 1s ease;
         }
 
-        /* --- 3. PHOTO WITH NEON GLOW --- */
-        .profile-pic {
-            width: 150px;
-            height: 150px;
+        .profile-img {
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
-            object-fit: cover;
             border: 4px solid #38bdf8; /* Cyan Border */
-            box-shadow: 0 0 20px #38bdf8; /* The Neon Glow */
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.6); /* Glowing Effect */
+            object-fit: cover;
             margin-bottom: 20px;
         }
 
-        /* --- 4. TEXT & TYPING ANIMATION --- */
         h1 {
-            font-size: 1.8rem;
+            font-size: 2.5rem;
             color: #fff;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
 
-        .role {
+        .tagline {
             color: #38bdf8;
+            font-size: 1.2rem;
             font-weight: 600;
-            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        /* --- "30 MARKS" CONTENT BOXES --- */
+        .content-box {
+            background: rgba(30, 41, 59, 0.7); /* Semi-transparent glass */
+            border: 1px solid #334155;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px); /* Blur effect behind the box */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .content-box:hover {
+            transform: translateY(-5px); /* Moves up slightly on hover */
+            border-color: #38bdf8;
+        }
+
+        h2 {
+            color: #38bdf8;
+            border-bottom: 2px solid #334155;
+            padding-bottom: 10px;
             margin-bottom: 20px;
-            height: 1.5em; /* Keeps space for typing */
+            font-size: 1.5rem;
         }
 
         p {
-            font-size: 0.9rem;
-            color: #94a3b8;
-            line-height: 1.6;
-            margin-bottom: 30px;
+            margin-bottom: 15px;
+            color: #cbd5e1;
+            text-align: justify;
         }
 
-        /* --- 5. SKILLS SECTION --- */
-        .skills {
-            text-align: left;
-            margin-bottom: 30px;
-        }
-        
+        /* --- SKILL TAGS --- */
         .skill-tag {
-            background: #334155;
-            color: #fff;
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
+            background: #0f172a;
+            color: #38bdf8;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
             display: inline-block;
-            margin: 5px 2px;
+            margin: 5px;
             border: 1px solid #38bdf8;
-        }
-
-        /* --- 6. BUTTONS --- */
-        .btn-container {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .btn {
-            text-decoration: none;
-            padding: 12px 25px;
-            border-radius: 30px;
             font-weight: bold;
+        }
+
+        /* --- FOOTER / CONTACT --- */
+        .contact-btn {
+            display: inline-block;
+            background: #38bdf8;
+            color: #0f172a;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
             transition: 0.3s;
         }
 
-        .btn-primary {
-            background: #38bdf8;
-            color: #0f172a;
+        .contact-btn:hover {
+            background: #fff;
+            box-shadow: 0 0 15px #fff;
         }
 
-        .btn-primary:hover {
-            background: #0ea5e9;
-            box-shadow: 0 0 15px #38bdf8;
+        /* Mobile Responsive */
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .container { padding: 10px; margin-top: 20px; }
         }
 
-        .btn-secondary {
-            border: 2px solid #38bdf8;
-            color: #38bdf8;
-        }
-
-        .btn-secondary:hover {
-            background: #38bdf8;
-            color: #0f172a;
-        }
-
-        /* Animation Keyframes */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
     </style>
 </head>
 <body>
 
-    <div class="profile-card">
-        <img src="my photo technical.jpg" alt="Shridhar Madival" class="profile-pic">
+    <div class="container">
         
-        <h1>Shridhar Madival</h1>
-        <div class="role">ECE Engineer & Developer</div>
-        
-        <p>
-            Second-year student at AITM Bhatkal. Passionate about Electronics, IoT Projects (ESP32), and Web Development. Aspiring TOP RANK IN GATE.
-        </p>
-
-        <div class="skills">
-            <span class="skill-tag">⚡ Electronics</span>
-            <span class="skill-tag">💻 HTML/CSS</span>
-            <span class="skill-tag">⚛️ GATE ASPIRANT</span>
-            <span class="skill-tag">📈 Stock Market</span>
+        <div class="profile-header">
+            <img src="technical.jpg" alt="Shridhar Madival" class="profile-img">
+            <h1>Shridhar Madival</h1>
+            <p class="tagline">ECE Engineer | Developer | GATE Aspirant</p>
+            <a href="https://github.com/shridhar-1" class="contact-btn">View My GitHub</a>
         </div>
 
-        <div class="btn-container">
-            <a href="mailto:madivalshridhar1@gmail.com" class="btn btn-primary">Hire Me</a>
-            <a href="https://github.com/shridhar-1" class="btn btn-secondary">My GitHub</a>
+        <div class="content-box">
+            <h2>👤 About Me</h2>
+            <p>
+                I am a dedicated <strong>Electronics & Communication Engineering (ECE)</strong> student currently in my 2nd year at <strong>AITM Bhatkal</strong>. Being a day scholar from Honnavar, I have learned the value of discipline and time management early in life.
+            </p>
+            <p>
+                My journey is driven by a strong technical curiosity. Whether it is solving complex circuit problems or designing modern websites, I believe in practical learning. I am constantly pushing my limits to master both hardware electronics and software development.
+            </p>
         </div>
+
+        <div class="content-box">
+            <h2>⚡ Technical Arsenal</h2>
+            <p>
+                As an engineer, I specialize in bridging the gap between hardware and software. My core strengths include:
+            </p>
+            <div style="margin-top: 15px;">
+                <span class="skill-tag">Analog Electronics</span>
+                <span class="skill-tag">Network Analysis</span>
+                <span class="skill-tag">IoT (ESP32)</span>
+                <span class="skill-tag">Engineering Math</span>
+                <span class="skill-tag">Web Dev (HTML/CSS)</span>
+                <span class="skill-tag">Circuit Design</span>
+            </div>
+        </div>
+
+        <div class="content-box">
+            <h2>🚀 Vision & Future Goals</h2>
+            <p>
+                My primary professional goal is to crack the <strong>GATE Exam</strong> with a top rank. I am dedicated to mastering core engineering concepts to secure a position in a prestigious <strong>Public Sector Undertaking (PSU)</strong> or pursue an M.Tech at a premier institute.
+            </p>
+            <p>
+                Simultaneously, I am building a strong portfolio in the private tech sector. I aim to work with international companies to gain global exposure and financial independence, which will eventually fund my long-term dream of starting a sustainable <strong>Dairy Business</strong>.
+            </p>
+        </div>
+
+        <div class="content-box">
+            <h2>🛠️ Key Projects</h2>
+            <p>
+                <strong>1. Honnavar Tourism Portal:</strong> A complete web guide for tourists visiting Honnavar, featuring glassmorphism design and live navigation links.
+            </p>
+            <p>
+                <strong>2. Class-D Audio Amplifier:</strong> Designed and tested a high-efficiency audio circuit in the ECE laboratory.
+            </p>
+             <p>
+                <strong>3. Stock Analysis:</strong> Active research in finding undervalued stocks in the Indian electronics and manufacturing sector.
+            </p>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; color: #94a3b8; font-size: 0.8rem;">
+            <p>&copy; 2026 Shridhar Madival. All Rights Reserved.</p>
+        </div>
+
     </div>
 
 </body>
