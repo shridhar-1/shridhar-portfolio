@@ -3,182 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visit Honnavar | The Untouched Paradise</title>
+    <title>Shridhar Madival | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* --- 1. GENERAL SETTINGS --- */
+        /* --- 1. DARK THEME SETTINGS --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
-            background-color: #f0f2f5;
-            color: #333;
-        }
-
-        /* --- 2. HERO SECTION ( The Big Image) --- */
-        header {
-            /* IMPORTANT: Make sure your image name matches exactly! */
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('beach.jpg');
-            height: 100vh;
-            background-size: cover;
-            background-position: center;
+            background-color: #0f172a; /* Dark Navy Blue */
+            color: #e2e8f0;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            color: white;
+            min-height: 100vh;
         }
 
-        header h1 {
-            font-size: 3.5rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-        }
-
-        header p {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
-            background-color: rgba(0,0,0,0.4); /* Glass effect */
-            padding: 10px 20px;
+        /* --- 2. THE MAIN CARD --- */
+        .profile-card {
+            background: #1e293b;
+            width: 90%;
+            max-width: 400px;
             border-radius: 20px;
-        }
-
-        .btn-main {
-            padding: 15px 30px;
-            background-color: #ff7e5f;
-            color: white;
-            text-decoration: none;
-            font-size: 1.2rem;
-            border-radius: 50px;
-            transition: transform 0.3s ease;
-            font-weight: bold;
-        }
-
-        .btn-main:hover {
-            transform: scale(1.1); /* Buttons grows when hovered */
-            background-color: #feb47b;
-        }
-
-        /* --- 3. PLACES TO VISIT (Cards) --- */
-        .container {
-            padding: 50px 20px;
-            max-width: 1100px;
-            margin: auto;
-        }
-
-        .section-title {
+            padding: 40px;
             text-align: center;
-            margin-bottom: 40px;
-            color: #2c3e50;
-            font-size: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid #334155;
+            animation: fadeIn 1.5s ease-in-out;
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+        /* --- 3. PHOTO WITH NEON GLOW --- */
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #38bdf8; /* Cyan Border */
+            box-shadow: 0 0 20px #38bdf8; /* The Neon Glow */
+            margin-bottom: 20px;
         }
 
-        .card {
-            background: white;
+        /* --- 4. TEXT & TYPING ANIMATION --- */
+        h1 {
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .role {
+            color: #38bdf8;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            height: 1.5em; /* Keeps space for typing */
+        }
+
+        p {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        /* --- 5. SKILLS SECTION --- */
+        .skills {
+            text-align: left;
+            margin-bottom: 30px;
+        }
+        
+        .skill-tag {
+            background: #334155;
+            color: #fff;
+            padding: 5px 12px;
             border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-10px); /* Card lifts up */
-        }
-
-        .card-content {
-            padding: 20px;
-        }
-
-        .card h3 {
-            color: #007bff;
-            margin-bottom: 10px;
-        }
-
-        /* --- 4. CONTACT SECTION --- */
-        .contact-section {
-            background-color: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 60px 20px;
-        }
-
-        .contact-box {
-            background: rgba(255,255,255,0.1);
+            font-size: 0.8rem;
             display: inline-block;
-            padding: 30px;
-            border-radius: 10px;
-            margin-top: 20px;
-            border: 1px solid rgba(255,255,255,0.2);
+            margin: 5px 2px;
+            border: 1px solid #38bdf8;
         }
 
-        /* --- MOBILE FIXES --- */
-        @media (max-width: 768px) {
-            header h1 { font-size: 2.5rem; }
-            header p { font-size: 1.1rem; }
+        /* --- 6. BUTTONS --- */
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
         }
+
+        .btn {
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #38bdf8;
+            color: #0f172a;
+        }
+
+        .btn-primary:hover {
+            background: #0ea5e9;
+            box-shadow: 0 0 15px #38bdf8;
+        }
+
+        .btn-secondary {
+            border: 2px solid #38bdf8;
+            color: #38bdf8;
+        }
+
+        .btn-secondary:hover {
+            background: #38bdf8;
+            color: #0f172a;
+        }
+
+        /* Animation Keyframes */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Welcome to Honnavar</h1>
-        <p>The Golden Land of Karnataka</p>
-        <a href="#contact" class="btn-main">Book Your Guide</a>
-    </header>
+    <div class="profile-card">
+        <img src="profile.jpeg" alt="Shridhar Madival" class="profile-pic">
+        
+        <h1>Shridhar Madival</h1>
+        <div class="role">ECE Engineer & Developer</div>
+        
+        <p>
+            Second-year student at AITM Bhatkal. Passionate about Electronics, IoT Projects (ESP32), and Web Development. Aspiring NPCIL Plant Operator.
+        </p>
 
-    <div class="container">
-        <h2 class="section-title">Top Attractions</h2>
-        <div class="grid">
-            
-            <div class="card">
-                <div class="card-content">
-                    <h3>Eco Beach (Kasarkod)</h3>
-                    <p>A "Blue Flag" certified beach known for its cleanliness, golden sands, and beautiful park. Perfect for morning walks.</p>
-                </div>
-            </div>
+        <div class="skills">
+            <span class="skill-tag">⚡ Electronics</span>
+            <span class="skill-tag">💻 HTML/CSS</span>
+            <span class="skill-tag">⚛️ NPCIL Aspirant</span>
+            <span class="skill-tag">📈 Stock Market</span>
+        </div>
 
-            <div class="card">
-                <div class="card-content">
-                    <h3>Sharavathi Backwaters</h3>
-                    <p>Experience the magical boat ride through the mangroves. The best sunset view in all of Uttara Kannada.</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-content">
-                    <h3>Apsarakonda Falls</h3>
-                    <p>The "Pond of Angels." A stunning waterfall facing the ocean with a beautiful garden and viewpoint.</p>
-                </div>
-            </div>
-
+        <div class="btn-container">
+            <a href="mailto:shridhar@example.com" class="btn btn-primary">Hire Me</a>
+            <a href="https://github.com/shridhar-1" class="btn btn-secondary">My GitHub</a>
         </div>
     </div>
-
-    <section id="contact" class="contact-section">
-        <h2>Plan Your Trip with Mr. Madival</h2>
-        <p>Local expert guidance for the best food, stay, and travel routes.</p>
-        
-        <div class="contact-box">
-            <h3>📞 Contact Us</h3>
-            <p style="font-size: 1.5rem; font-weight: bold; margin: 10px 0;">+91 99999 88888</p>
-            <p>Email: madivalshridhar1@gmail.com</p>
-            <br>
-            <a href="tel:+919972752670" class="btn-main" style="background-color: #25d366;">Chat on WhatsApp</a>
-        </div>
-        
-        <br><br>
-        <p style="font-size: 0.8rem; opacity: 0.7;">© 2026 Designed by Shridhar Madival (AITM)</p>
-    </section>
 
 </body>
 </html>
