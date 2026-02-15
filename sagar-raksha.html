@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sagar Raksha | Coming Soon</title>
+    <title>Sagar Raksha | Marine Safety System</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         
         body {
+            /* No static color - Video handles background */
             background-color: #0f172a;
             color: #e2e8f0;
             display: flex;
@@ -18,6 +19,19 @@
             flex-direction: column;
             text-align: center;
             overflow: hidden;
+            position: relative;
+        }
+
+        /* --- BACKGROUND SEA VIDEO --- */
+        #sea-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -2; /* Puts it way back */
+            object-fit: cover;
+            filter: brightness(40%); /* Darkens video so radar is visible */
         }
 
         /* --- RADAR ANIMATION --- */
@@ -29,6 +43,8 @@
             position: relative;
             box-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
             margin-bottom: 40px;
+            background: rgba(0, 0, 0, 0.3); /* Glass effect inside radar */
+            backdrop-filter: blur(5px);
         }
 
         .radar::after {
@@ -49,7 +65,7 @@
         .dot {
             width: 10px;
             height: 10px;
-            background: #ef4444; /* Red dot for "Target" */
+            background: #ef4444; /* Red dot (Target) */
             border-radius: 50%;
             position: absolute;
             top: 30px;
@@ -68,25 +84,33 @@
             50% { opacity: 0; }
         }
 
-        /* --- TEXT --- */
+        /* --- TEXT STYLING --- */
+        .content-box {
+            background: rgba(15, 23, 42, 0.6); /* Glass box for text */
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 700px;
+        }
+
         h1 {
             font-size: 3rem;
             color: #fff;
             margin-bottom: 10px;
             text-transform: uppercase;
             letter-spacing: 2px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
         }
 
         p {
             font-size: 1.2rem;
-            color: #94a3b8;
-            max-width: 600px;
-            margin: 0 auto 30px;
+            color: #cbd5e1;
             line-height: 1.6;
         }
 
         .status-badge {
-            background: rgba(56, 189, 248, 0.1);
+            background: rgba(56, 189, 248, 0.2);
             color: #38bdf8;
             padding: 8px 20px;
             border-radius: 20px;
@@ -94,10 +118,13 @@
             font-weight: bold;
             display: inline-block;
             margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* --- HOME BUTTON --- */
         .btn {
+            display: inline-block;
+            margin-top: 30px;
             text-decoration: none;
             padding: 12px 30px;
             border-radius: 30px;
@@ -105,31 +132,37 @@
             transition: 0.3s;
             border: 2px solid #38bdf8;
             color: #38bdf8;
+            background: rgba(15, 23, 42, 0.8);
         }
 
         .btn:hover {
             background: #38bdf8;
             color: #0f172a;
-            box-shadow: 0 0 15px #38bdf8;
+            box-shadow: 0 0 20px #38bdf8;
         }
-
     </style>
 </head>
 <body>
+
+    <video autoplay muted loop playsinline id="sea-video">
+        <source src="sea.mp4" type="video/mp4">
+    </video>
 
     <div class="radar">
         <div class="dot"></div>
     </div>
 
-    <div class="status-badge">🚧 Under Development</div>
+    <div class="content-box">
+        <div class="status-badge">🚧 Prototype Phase</div>
 
-    <h1>Sagar Raksha</h1>
-    <p>
-        An advanced Marine Safety System powered by IoT. <br>
-        Currently in the research and prototyping phase.
-    </p>
+        <h1>Sagar Raksha</h1>
+        <p>
+            <strong>"Protector of the Sea"</strong> <br>
+            An advanced Marine Safety & Surveillance System designed to aid fishermen and coastal security using long-range IoT communication.
+        </p>
 
-    <a href="index.html" class="btn">← Back to Portfolio</a>
+        <a href="index.html" class="btn">← Back to Mission Control</a>
+    </div>
 
 </body>
 </html>
