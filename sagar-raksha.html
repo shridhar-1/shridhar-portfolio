@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sagar Raksha | Coming Soon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        
+        body {
+            background-color: #0f172a;
+            color: #e2e8f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* --- RADAR ANIMATION --- */
+        .radar {
+            width: 150px;
+            height: 150px;
+            border: 4px solid #38bdf8;
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+            margin-bottom: 40px;
+        }
+
+        .radar::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 50%;
+            height: 50%;
+            background: linear-gradient(45deg, rgba(56, 189, 248, 0) 50%, rgba(56, 189, 248, 1) 100%);
+            border-radius: 100% 0 0 0;
+            top: 0;
+            left: 0;
+            transform-origin: 100% 100%;
+            animation: scan 2s infinite linear;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background: #ef4444; /* Red dot for "Target" */
+            border-radius: 50%;
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            box-shadow: 0 0 10px #ef4444;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes scan {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* --- TEXT --- */
+        h1 {
+            font-size: 3rem;
+            color: #fff;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+
+        .status-badge {
+            background: rgba(56, 189, 248, 0.1);
+            color: #38bdf8;
+            padding: 8px 20px;
+            border-radius: 20px;
+            border: 1px solid #38bdf8;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        /* --- HOME BUTTON --- */
+        .btn {
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+            border: 2px solid #38bdf8;
+            color: #38bdf8;
+        }
+
+        .btn:hover {
+            background: #38bdf8;
+            color: #0f172a;
+            box-shadow: 0 0 15px #38bdf8;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="radar">
+        <div class="dot"></div>
+    </div>
+
+    <div class="status-badge">🚧 Under Development</div>
+
+    <h1>Sagar Raksha</h1>
+    <p>
+        An advanced Marine Safety System powered by IoT. <br>
+        Currently in the research and prototyping phase.
+    </p>
+
+    <a href="index.html" class="btn">← Back to Portfolio</a>
+
+</body>
+</html>
