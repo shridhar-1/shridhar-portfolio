@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Class-D Amplifier Project | Shridhar Madival</title>
+    <title>Class-D Amplifier | Shridhar Madival</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* --- COPYING YOUR MAIN THEME --- */
+        /* --- GLOBAL THEME --- */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         
         body {
@@ -16,7 +16,6 @@
             padding-bottom: 50px;
         }
 
-        /* Darker background for reading technical text */
         .container {
             max-width: 800px;
             margin: 0 auto;
@@ -31,8 +30,9 @@
             margin-bottom: 40px;
         }
 
-        h1 { font-size: 2.5rem; color: #38bdf8; margin-bottom: 10px; }
-        .subtitle { color: #94a3b8; font-size: 1.1rem; }
+        h1 { font-size: 2.2rem; color: #38bdf8; margin-bottom: 10px; line-height: 1.3; }
+        .subtitle { color: #94a3b8; font-size: 1rem; margin-top: 5px; }
+        .guide-name { color: #cbd5e1; font-weight: bold; margin-top: 10px; display: block; }
 
         /* --- CONTENT SECTIONS --- */
         .tech-section {
@@ -46,7 +46,7 @@
 
         h2 { color: #fff; margin-bottom: 15px; border-left: 4px solid #38bdf8; padding-left: 15px; }
         
-        /* --- IMAGES (Circuit & Prototype) --- */
+        /* --- IMAGES --- */
         .project-img {
             width: 100%;
             height: auto;
@@ -58,7 +58,7 @@
         /* --- COMPONENT LIST --- */
         .component-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 10px;
         }
         .comp-item {
@@ -94,53 +94,64 @@
         <a href="index.html" class="back-btn">← Back to Home</a>
 
         <header class="project-header">
-            <h1>Class-D Audio Amplifier</h1>
-            <p class="subtitle">High Efficiency Power Amplifier Project | ECE Dept AITM</p>
+            <h1>Design & Implementation of Low-Cost Class-D Amplifier Using PWM</h1>
+            <p class="subtitle">Course: EPC (BEC303) | AITM Bhatkal</p>
+            <span class="guide-name">Under the Guidance of: Prof. Naveen Kasim</span>
         </header>
 
         <div class="tech-section">
-            <h2>📝 Abstract</h2>
+            <h2>📝 Abstract & Motive</h2>
             <p>
-                This project focuses on designing a <strong>Class-D Power Amplifier</strong>, known for its superior efficiency (up to 90%) compared to traditional Class-A or Class-AB amplifiers. By using Pulse Width Modulation (PWM) to switch transistors strictly ON or OFF, power loss is minimized. The final output is reconstructed using an active Low-Pass Filter (LC Filter).
+                Conventional Class-A or Class-AB amplifiers suffer from low efficiency (often below 50%) due to significant heat dissipation in the active region of transistors. 
+                To address this, this project implements a <strong>Class-D Audio Amplifier</strong> using the ubiquitous <strong>NE555 Timer IC</strong>. By operating transistors as switches (PWM technique), we achieve higher efficiency without bulky heat sinks.
             </p>
         </div>
 
         <div class="tech-section">
             <h2>🔌 Circuit Diagram</h2>
-            <p>Below is the schematic designed for the amplifier stage, featuring the Comparator and MOSFET switching stage.</p>
+            <p>The system consists of a PWM Modulator (NE555), a Power Stage (H-Bridge/Push-Pull), and an Output Filter.</p>
             
-            <img src="circuit.png" alt="Circuit Diagram - Upload circuit.jpg to see this" class="project-img">
-            <p style="font-size: 0.8rem; color: #aaa; text-align: center;">(Fig 1.1: Schematic Diagram)</p>
+            <img src="circuit.jpg" alt="Circuit Diagram" class="project-img">
+            <p style="font-size: 0.8rem; color: #aaa; text-align: center;">(Fig 1: System Block Diagram)</p>
         </div>
 
         <div class="tech-section">
             <h2>🧰 Components Used</h2>
             <div class="component-list">
-                <div class="comp-item">MOSFET IRF540</div>
-                <div class="comp-item">NE555 Timer</div>
-                <div class="comp-item">Comparator IC</div>
-                <div class="comp-item">Capacitors (10uF)</div>
-                <div class="comp-item">Inductor (LC Filter)</div>
-                <div class="comp-item">Resistors</div>
+                <div class="comp-item">NE555 Timer IC</div>
+                <div class="comp-item">BD139 (NPN)</div>
+                <div class="comp-item">BD140 (PNP)</div>
+                <div class="comp-item">LC Low-Pass Filter</div>
+                <div class="comp-item">Hi-Watt 9V Battery</div>
+                <div class="comp-item">Speaker (8 Ohm)</div>
             </div>
         </div>
 
         <div class="tech-section">
             <h2>⚙️ Working Principle</h2>
             <p>
-                <strong>1. Modulation:</strong> The input audio signal is compared with a high-frequency triangular wave to generate a PWM signal.
+                <strong>1. PWM Generation:</strong> The NE555 timer is configured in a modified <em>astable multivibrator</em> mode. The input audio signal modulates the <strong>Control Voltage (Pin 5)</strong>, which varies the duty cycle of the output pulse train.
                 <br><br>
-                <strong>2. Amplification:</strong> This PWM signal drives the MOSFETs in a push-pull configuration. Since MOSFETs operate only in saturation or cut-off regions, heat dissipation is negligible.
+                <strong>2. Switching Stage:</strong> This PWM signal drives a complementary push-pull output stage using <strong>BD139 and BD140</strong> transistors. These operate as high-speed switches, significantly reducing power loss.
                 <br><br>
-                <strong>3. Demodulation:</strong> A passive LC Low-Pass Filter removes the high-frequency carrier wave, retrieving the amplified audio signal for the speaker.
+                <strong>3. Demodulation:</strong> A passive <strong>LC Low-Pass Filter</strong> removes the high-frequency carrier pulses and reconstructs the amplified analog audio signal for the speaker.
             </p>
         </div>
 
         <div class="tech-section">
-            <h2>✅ Conclusion & Results</h2>
+            <h2>✅ Conclusion</h2>
             <p>
-                The prototype successfully amplified low-power audio signals with minimal distortion. Thermal analysis showed significantly lower heat generation than equivalent Class-AB circuits, validating the high-efficiency theoretical model suitable for battery-operated portable devices.
+                The simulation and hardware implementation confirmed that the NE555 can accurately modulate audio signals. The Class-D design successfully operated the output transistors in saturation and cut-off modes, minimizing heat dissipation compared to traditional amplifiers.
             </p>
+        </div>
+
+        <div class="tech-section">
+            <h2>🚀 Future Scope</h2>
+            <ul style="list-style-position: inside; color: #cbd5e1; margin-top: 10px;">
+                <li style="margin-bottom: 10px;"><strong>Stereo Implementation:</strong> Using two NE555 timers or a single NE556 dual timer for Left/Right channels.</li>
+                <li style="margin-bottom: 10px;"><strong>MOSFET Upgrade:</strong> Replacing BJTs with Power MOSFETs (like IRFZ44N) to handle loads above 50 Watts.</li>
+                <li><strong>Feedback Loop:</strong> Adding negative feedback to reduce Total Harmonic Distortion (THD).</li>
+            </ul>
         </div>
 
         <div style="text-align: center; margin-top: 50px;">
@@ -150,5 +161,4 @@
     </div>
 
 </body>
-
 </html>
