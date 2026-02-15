@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class-D Amplifier Project | Shridhar Madival</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- COPYING YOUR MAIN THEME --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        
+        body {
+            background-color: #0f172a;
+            color: #e2e8f0;
+            line-height: 1.6;
+            padding-bottom: 50px;
+        }
+
+        /* Darker background for reading technical text */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* --- HEADER --- */
+        .project-header {
+            text-align: center;
+            padding: 60px 0 30px;
+            border-bottom: 2px solid #334155;
+            margin-bottom: 40px;
+        }
+
+        h1 { font-size: 2.5rem; color: #38bdf8; margin-bottom: 10px; }
+        .subtitle { color: #94a3b8; font-size: 1.1rem; }
+
+        /* --- CONTENT SECTIONS --- */
+        .tech-section {
+            background: #1e293b;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            border: 1px solid #334155;
+        }
+
+        h2 { color: #fff; margin-bottom: 15px; border-left: 4px solid #38bdf8; padding-left: 15px; }
+        
+        /* --- IMAGES (Circuit & Prototype) --- */
+        .project-img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            border: 2px solid #334155;
+            margin: 20px 0;
+        }
+
+        /* --- COMPONENT LIST --- */
+        .component-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+        .comp-item {
+            background: #0f172a;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #38bdf8;
+            color: #38bdf8;
+            font-size: 0.9rem;
+        }
+
+        /* --- BACK BUTTON --- */
+        .back-btn {
+            display: inline-block;
+            background: transparent;
+            border: 2px solid #38bdf8;
+            color: #38bdf8;
+            padding: 10px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .back-btn:hover { background: #38bdf8; color: #0f172a; }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <a href="index.html" class="back-btn">← Back to Home</a>
+
+        <header class="project-header">
+            <h1>Class-D Audio Amplifier</h1>
+            <p class="subtitle">High Efficiency Power Amplifier Project | ECE Dept AITM</p>
+        </header>
+
+        <div class="tech-section">
+            <h2>📝 Abstract</h2>
+            <p>
+                This project focuses on designing a <strong>Class-D Power Amplifier</strong>, known for its superior efficiency (up to 90%) compared to traditional Class-A or Class-AB amplifiers. By using Pulse Width Modulation (PWM) to switch transistors strictly ON or OFF, power loss is minimized. The final output is reconstructed using an active Low-Pass Filter (LC Filter).
+            </p>
+        </div>
+
+        <div class="tech-section">
+            <h2>🔌 Circuit Diagram</h2>
+            <p>Below is the schematic designed for the amplifier stage, featuring the Comparator and MOSFET switching stage.</p>
+            
+            <img src="circuit.jpg" alt="Circuit Diagram - Upload circuit.jpg to see this" class="project-img">
+            <p style="font-size: 0.8rem; color: #aaa; text-align: center;">(Fig 1.1: Schematic Diagram)</p>
+        </div>
+
+        <div class="tech-section">
+            <h2>🧰 Components Used</h2>
+            <div class="component-list">
+                <div class="comp-item">MOSFET IRF540</div>
+                <div class="comp-item">NE555 Timer</div>
+                <div class="comp-item">Comparator IC</div>
+                <div class="comp-item">Capacitors (10uF)</div>
+                <div class="comp-item">Inductor (LC Filter)</div>
+                <div class="comp-item">Resistors</div>
+            </div>
+        </div>
+
+        <div class="tech-section">
+            <h2>⚙️ Working Principle</h2>
+            <p>
+                <strong>1. Modulation:</strong> The input audio signal is compared with a high-frequency triangular wave to generate a PWM signal.
+                <br><br>
+                <strong>2. Amplification:</strong> This PWM signal drives the MOSFETs in a push-pull configuration. Since MOSFETs operate only in saturation or cut-off regions, heat dissipation is negligible.
+                <br><br>
+                <strong>3. Demodulation:</strong> A passive LC Low-Pass Filter removes the high-frequency carrier wave, retrieving the amplified audio signal for the speaker.
+            </p>
+        </div>
+
+        <div class="tech-section">
+            <h2>✅ Conclusion & Results</h2>
+            <p>
+                The prototype successfully amplified low-power audio signals with minimal distortion. Thermal analysis showed significantly lower heat generation than equivalent Class-AB circuits, validating the high-efficiency theoretical model suitable for battery-operated portable devices.
+            </p>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px;">
+            <a href="index.html" class="back-btn">Back to Portfolio</a>
+        </div>
+
+    </div>
+
+</body>
+</html>
