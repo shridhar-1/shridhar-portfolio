@@ -5,146 +5,178 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard | Portfolio</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #0d1117;
-            color: #c9d1d9;
-            display: flex;
-            min-height: 100vh;
-        }
-
-        /* Sidebar Navigation */
-        .sidebar {
-            width: 250px;
-            background-color: #161b22;
-            border-right: 1px solid #30363d;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .sidebar h2 {
-            color: #ffffff;
-            font-size: 20px;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        .nav-link {
-            display: block;
-            padding: 12px 15px;
-            color: #c9d1d9;
-            text-decoration: none;
-            border-radius: 6px;
-            margin-bottom: 10px;
-            transition: background-color 0.3s;
-        }
-
-        .nav-link:hover, .nav-link.active {
-            background-color: #007bff;
-            color: #ffffff;
-        }
-
-        .logout-btn {
-            margin-top: auto;
-            background-color: #da3633;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #0d1117; color: #c9d1d9; display: flex; min-height: 100vh; }
         
-        .logout-btn:hover {
-            background-color: #b32624;
-        }
-
+        /* Sidebar Navigation */
+        .sidebar { width: 250px; background-color: #161b22; border-right: 1px solid #30363d; padding: 20px; display: flex; flex-direction: column; }
+        .sidebar h2 { color: #ffffff; font-size: 20px; margin-bottom: 30px; text-align: center; }
+        .nav-link { display: block; padding: 12px 15px; color: #c9d1d9; text-decoration: none; border-radius: 6px; margin-bottom: 10px; transition: background-color 0.3s; cursor: pointer; }
+        .nav-link:hover, .nav-link.active { background-color: #007bff; color: #ffffff; }
+        .logout-btn { margin-top: auto; background-color: #da3633; text-align: center; }
+        .logout-btn:hover { background-color: #b32624; }
+        
         /* Main Content Area */
-        .main-content {
-            flex-grow: 1;
-            padding: 40px;
-        }
+        .main-content { flex-grow: 1; padding: 40px; }
+        .header { margin-bottom: 30px; border-bottom: 1px solid #30363d; padding-bottom: 20px; }
+        .header h1 { color: #ffffff; font-size: 28px; }
+        
+        /* View Sections - Controls what is visible */
+        .view-section { display: none; }
+        .view-section.active-view { display: block; }
 
-        .header {
-            margin-bottom: 30px;
-            border-bottom: 1px solid #30363d;
-            padding-bottom: 20px;
-        }
+        /* Dashboard Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .card { background-color: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+        .card h3 { color: #8b949e; font-size: 14px; text-transform: uppercase; margin-bottom: 10px; }
+        .card .value { font-size: 32px; font-weight: bold; color: #ffffff; }
+        .card .highlight { color: #007bff; }
 
-        .header h1 {
-            color: #ffffff;
-            font-size: 28px;
-        }
+        /* Tables for Projects */
+        table { width: 100%; border-collapse: collapse; background-color: #161b22; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid #30363d; }
+        th { background-color: #21262d; color: #c9d1d9; font-weight: 600; }
+        .status-active { color: #3fb950; font-weight: bold; }
+        .status-completed { color: #a371f7; font-weight: bold; }
+        .edit-btn { background-color: #238636; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; }
+        .edit-btn:hover { background-color: #2ea043; }
 
-        /* Dashboard Cards */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background-color: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
-
-        .card h3 {
-            color: #8b949e;
-            font-size: 14px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        .card .value {
-            font-size: 32px;
-            font-weight: bold;
-            color: #ffffff;
-        }
-
-        .card .highlight {
-            color: #007bff;
-        }
+        /* Message Cards */
+        .message-card { background-color: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+        .msg-header { display: flex; justify-content: space-between; border-bottom: 1px solid #30363d; padding-bottom: 10px; margin-bottom: 15px; }
+        .msg-sender { font-weight: bold; color: #ffffff; font-size: 16px; }
+        .msg-email { color: #8b949e; font-size: 14px; }
+        .msg-date { color: #8b949e; font-size: 12px; }
+        .msg-body { line-height: 1.6; color: #c9d1d9; font-size: 14px; }
+        .delete-btn { background-color: transparent; border: 1px solid #da3633; color: #da3633; padding: 6px 12px; border-radius: 4px; cursor: pointer; margin-top: 15px; }
+        .delete-btn:hover { background-color: #da3633; color: white; }
     </style>
 </head>
 <body>
 
-    <!-- Sidebar -->
+    <!-- Sidebar Navigation -->
     <div class="sidebar">
         <h2>Admin Panel</h2>
-        <a href="#" class="nav-link active">Dashboard</a>
-        <a href="#" class="nav-link">Manage Projects</a>
-        <a href="#" class="nav-link">Messages</a>
+        <a class="nav-link active" onclick="switchTab('dashboard')">Dashboard</a>
+        <a class="nav-link" onclick="switchTab('projects')">Manage Projects</a>
+        <a class="nav-link" onclick="switchTab('messages')">Messages</a>
         <a href="index.html" class="nav-link logout-btn">Log Out</a>
     </div>
 
-    <!-- Main Content -->
+    <!-- Main Content Area -->
     <div class="main-content">
-        <div class="header">
-            <h1>Welcome back, Admin</h1>
-            <p>Here is what is happening with your portfolio today.</p>
+
+        <!-- 1. DASHBOARD VIEW -->
+        <div id="dashboard" class="view-section active-view">
+            <div class="header">
+                <h1>Overview</h1>
+                <p>Welcome back! Here is what is happening with your portfolio today.</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>Total Page Views</h3>
+                    <div class="value">1,024</div>
+                </div>
+                <div class="card">
+                    <h3>Form Submissions</h3>
+                    <div class="value highlight">1</div>
+                </div>
+                <div class="card">
+                    <h3>Active Projects</h3>
+                    <div class="value">4</div>
+                </div>
+            </div>
         </div>
 
-        <div class="grid">
-            <div class="card">
-                <h3>Total Page Views</h3>
-                <div class="value">1,024</div>
+        <!-- 2. MANAGE PROJECTS VIEW -->
+        <div id="projects" class="view-section">
+            <div class="header">
+                <h1>Manage Projects</h1>
+                <p>Update the status and details of your portfolio repositories.</p>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Project Name</th>
+                        <th>Category</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sagar Raksha (LoRa)</td>
+                        <td>Hardware / IoT</td>
+                        <td class="status-active">Active</td>
+                        <td><button class="edit-btn">Edit</button></td>
+                    </tr>
+                    <tr>
+                        <td>Class-D Audio Amplifier</td>
+                        <td>Circuit Design</td>
+                        <td class="status-completed">Completed</td>
+                        <td><button class="edit-btn">Edit</button></td>
+                    </tr>
+                    <tr>
+                        <td>VTU CGPA Calculator</td>
+                        <td>Web Development</td>
+                        <td class="status-active">Active</td>
+                        <td><button class="edit-btn">Edit</button></td>
+                    </tr>
+                    <tr>
+                        <td>Personal Portfolio</td>
+                        <td>Web Development</td>
+                        <td class="status-active">Active</td>
+                        <td><button class="edit-btn">Edit</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 3. MESSAGES VIEW -->
+        <div id="messages" class="view-section">
+            <div class="header">
+                <h1>Inbox</h1>
+                <p>Recent Formspree submissions from shridharmadival.in.</p>
             </div>
             
-            <div class="card">
-                <h3>Form Submissions</h3>
-                <div class="value highlight">1</div>
-            </div>
-            
-            <div class="card">
-                <h3>Active Projects</h3>
-                <div class="value">4</div>
+            <div class="message-card">
+                <div class="msg-header">
+                    <div>
+                        <div class="msg-sender">William Carlson</div>
+                        <div class="msg-email">redfoolscontact@gmail.com</div>
+                    </div>
+                    <div class="msg-date">May 31, 2026 - 12:29 AM</div>
+                </div>
+                <div class="msg-body">
+                    <p>I was browsing around on GitHub, came across your repos, and wanted to say great job. You're putting together some solid work, and you definitely have a bright future ahead of you in the tech world.</p>
+                    <br>
+                    <p>Since you've already got the technical side down, I thought I'd drop you a quick note. I've spent the last two years creating a comprehensive game development curriculum with about 100+ hours of material... If you have a couple of minutes to check it out, I'd love to get your feedback.</p>
+                </div>
+                <button class="delete-btn">Mark as Spam</button>
             </div>
         </div>
+
     </div>
 
+    <!-- JavaScript to handle switching between tabs -->
+    <script>
+        function switchTab(tabId) {
+            // 1. Hide all view sections
+            const sections = document.querySelectorAll('.view-section');
+            sections.forEach(section => {
+                section.classList.remove('active-view');
+            });
+
+            // 2. Remove active highlight from all sidebar links
+            const links = document.querySelectorAll('.nav-link');
+            links.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // 3. Show the target section and highlight the clicked link
+            document.getElementById(tabId).classList.add('active-view');
+            event.target.classList.add('active');
+        }
+    </script>
 </body>
 </html>
