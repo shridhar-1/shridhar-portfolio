@@ -15,6 +15,10 @@
             font-family: 'Poppins', sans-serif;
         }
 
+        html {
+            scroll-behavior: smooth; /* Smooth scrolling for the entry button */
+        }
+
         body {
             background-color: #0f172a; 
             color: #e2e8f0;
@@ -31,12 +35,62 @@
             min-height: 100%;
             z-index: -2;
             object-fit: cover;
-            filter: brightness(30%); /* Darker for better text readability */
+            filter: brightness(30%);
         }
 
+        /* --- WELCOME ENTRY SECTION --- */
+        .welcome-entry {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+        }
+
+        .welcome-entry h1 {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            color: #fff;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .welcome-entry p {
+            font-size: 1.5rem;
+            color: #38bdf8;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+        }
+
+        .scroll-down-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border: 2px solid #38bdf8;
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            background: rgba(15, 23, 42, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .scroll-down-btn:hover {
+            background: #38bdf8;
+            color: #0f172a;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(56, 189, 248, 0.4);
+        }
+
+        /* --- PROFILE CONTAINER --- */
         .container {
             max-width: 900px;
-            margin: 50px auto;
+            margin: 0 auto 50px auto;
             padding: 20px;
             position: relative;
             z-index: 1;
@@ -59,7 +113,7 @@
             margin-bottom: 20px;
         }
 
-        h1 { font-size: 2.5rem; color: #fff; margin-bottom: 10px; }
+        h1.profile-name { font-size: 2.5rem; color: #fff; margin-bottom: 10px; }
         
         .tagline {
             color: #38bdf8;
@@ -144,7 +198,7 @@
 
         .contact-btn {
             display: inline-block;
-            background: #0077b5; /* LinkedIn Blue */
+            background: #0077b5;
             color: white;
             padding: 12px 30px;
             border-radius: 30px;
@@ -157,26 +211,28 @@
         .contact-btn:hover { background: #fff; color: #0077b5; box-shadow: 0 0 15px #fff; }
 
         #contact {
-  text-align: center;
-  padding: 40px;
-}
+            text-align: center;
+            padding: 40px;
+        }
 
-#contact input, #contact textarea {
-  width: 80%;
-  margin: 10px;
-  padding: 10px;
-}
+        #contact input, #contact textarea {
+            width: 80%;
+            margin: 10px;
+            padding: 10px;
+        }
 
-#contact button {
-  padding: 10px 20px;
-  background: #007bff;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
+        #contact button {
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
 
         @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
+            .welcome-entry h1 { font-size: 2.5rem; }
+            .welcome-entry p { font-size: 1.2rem; }
+            h1.profile-name { font-size: 2rem; }
             .container { padding: 10px; margin-top: 20px; }
         }
 
@@ -192,13 +248,18 @@
         <source src="bg.mp4" type="video/mp4">
     </video>
 
-    <div class="container">
+    <div class="welcome-entry">
+        <h1>Welcome to My World</h1>
+        <p>Engineering the future through electronics and code.</p>
+        <a href="#profile-start" class="scroll-down-btn">Explore My Profile 👇</a>
+    </div>
+
+    <div class="container" id="profile-start">
         
         <div class="profile-header">
             <img src="profilepic.png" alt="Shridhar Madival" class="profile-img">
-            <h1>Shridhar Madival</h1>
+            <h1 class="profile-name">Shridhar Madival</h1>
             <p class="tagline">ECE Student | Developer | GATE Aspirant</p>
-            
             <a href="https://www.linkedin.com/in/shridhar-madival-646a3933b" class="contact-btn">Connect on LinkedIn</a>
         </div>
 
@@ -253,98 +314,91 @@
             <p>
                 <strong>1. SAGAR RAKSHA (Future Project):</strong> 
                 <br>Currently working on a conceptual advanced marine safety system.<br>
-    <a href="sagar-raksha.html" style="color: #38bdf8; font-weight: bold; text-decoration: none;">👉 Check Status</a>
-</p>
+                <a href="sagar-raksha.html" style="color: #38bdf8; font-weight: bold; text-decoration: none;">👉 Check Status</a>
+            </p>
             <p>
                 <strong>2. VTU CGPA Pro Calculator:</strong>
                 <br>Developed a full-stack Python web application that parses raw VTU result PDFs, automatically matches subjects to credit schemes, and calculates precise SGPA/CGPA with a modern Glassmorphism UI.<br>
                 <a href="https://vtu-sgpa-cgpa-calculator.onrender.com" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">👉 Click to Open Web App</a>
-</p>
+            </p>
             <p>
                 <strong>3. Class-D Audio Amplifier:</strong> 
                 <br> Designed and tested a high-efficiency audio circuit in the ECE laboratory. <br>
                 <a href="class_d_amplifier.html" style="color: #38bdf8; font-weight: bold; text-decoration: none;">👉 Click to View Project Details</a>
-          </p>
-
+            </p>
             <p>
-                <strong>4.CS:</strong>
+                <strong>4. CS:</strong>
                 <br>UNIQUE ONE GENERATED.<br>
                 <a href="https://drive.google.com/file/d/1cxJHd0fKaDS-yrJMumHPU1IxXwk3oPg5/view?usp=drivesdk" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">👉 Click to Open Web App</a>
             </p>
-
             <p>
                 <strong>5. CS OFFICIAL</strong>
                 <br>MC OFFICIAL .<br>
                 <a href="https://drive.google.com/file/d/1C1YbLx1bNzHVt-Ro8yp0qPJWwyNVfQjd/view?usp=drivesdk" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">👉 Click to Open Web App</a>
             </p>
-
-            <strong>6. MC 1</strong>
+            <p>
+                <strong>6. MC 1</strong>
                 <br>RUNNING OUT OF TIME .<br>
                 <a href="https://drive.google.com/file/d/11b8uPSuoSL5RFjZePih7gTrGtBtjSf9A/view?usp=sharing" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">👉 Click to Open Web App</a>
             </p>
-            <strong>7. MC 2</strong>
+            <p>
+                <strong>7. MC 2</strong>
                 <br>READY FOR COMPETITION .<br>
                 <a href="https://drive.google.com/file/d/1-PZjpFp4V8afgNhoT9wogxPmg__2czU8/view?usp=sharing" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">👉 Click to Open Web App</a>
             </p>
-
-            <strong>8. MC 3</strong>
+            <p>
+                <strong>8. MC 3</strong>
                 <br>EXTERNAL EXAMS ON 21 .<br>
                 <a href="https://drive.google.com/file/d/1-QRwx55mMzxpEXZu_7bti-6cluqQ8_YF/view?usp=sharing" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">👉 Click to Open Web App</a>
             </p>
-
-            <strong>9. MC 4</strong>
+            <p>
+                <strong>9. MC 4</strong>
                 <br>SEE YOU AGAIN .<br>
                 <a href="https://drive.google.com/file/d/1Zj8KLLo7Z_DEkgdiUCobpcpDieGsCBKa/view?usp=sharing" target="_blank" style="color: #3498db; text-decoration: none; font-weight: bold;">👉 Click to Open Web App</a>
             </p>
         </div>
 
         <div style="text-align: center; margin-top: 40px; color: #94a3b8; font-size: 0.8rem;">
-                    <div style="text-align: center; margin-top: 40px; color: #94a3b8; font-size: 0.8rem;">
             <p>&copy; 2026 Shridhar Madival. All Rights Reserved. | <a href="login.html" style="color: #38bdf8; text-decoration: none;">Admin Login</a></p>
         </div>
 
-            <section id="contact">
-    <h2>📬 Contact Me</h2>
-    <p>Have a question or project? Send me a message!</p>
+        <section id="contact">
+            <h2>📬 Contact Me</h2>
+            <p>Have a question or project? Send me a message!</p>
 
-<form id="my-contact-form" action="https://formspree.io/f/xbdpvbgl" method="POST">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <textarea name="message" placeholder="Your Message" required></textarea>
-    <button type="submit">Send Message</button>
-</form>
-</section>
-
-            <p>&copy; 2026 Shridhar Madival. All Rights Reserved.</p>
-        </div>
+            <form id="my-contact-form" action="https://formspree.io/f/xbdpvbgl" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
 
     </div>
+
     <script>
-  var form = document.getElementById("my-contact-form");
-  
-  form.addEventListener("submit", async function(event) {
-    // This stops Formspree's default page from loading
-    event.preventDefault(); 
-    
-    var data = new FormData(event.target);
-    
-    // Send the data quietly in the background
-    fetch(event.target.action, {
-      method: form.method,
-      body: data,
-      headers: {
-          'Accept': 'application/json'
-      }
-    }).then(response => {
-      if (response.ok) {
-        // Force the redirect to your beautiful custom page
-        window.location.href = "https://shridharmadival.in/thankyou.html";
-      } else {
-        alert("Oops! There was a problem submitting your form.");
-      }
-    });
-  });
-</script>
+        var form = document.getElementById("my-contact-form");
+        
+        form.addEventListener("submit", async function(event) {
+            event.preventDefault(); 
+            
+            var data = new FormData(event.target);
+            
+            fetch(event.target.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    window.location.href = "https://shridharmadival.in/thankyou.html";
+                } else {
+                    alert("Oops! There was a problem submitting your form.");
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
