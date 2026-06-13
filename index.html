@@ -20,30 +20,59 @@
 
         .welcome-video {
             position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-            object-fit: cover; z-index: -1;
+            object-fit: cover; z-index: -2;
         }
 
-        /* Dark red tint over the video to blend it with the theme */
         .welcome-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-            background: rgba(30, 0, 0, 0.7); z-index: 0; 
+            background: rgba(30, 0, 0, 0.7); z-index: -1; 
         }
 
         .welcome-content { position: relative; z-index: 1; text-align: center; }
+
+        /* --- NEW ELEMENTS (Avatar & Tech Tag) --- */
+        .intro-avatar {
+            width: 120px !important; 
+            height: 120px !important; 
+            border-radius: 50% !important;
+            border: 2px solid #ff003c !important; 
+            box-shadow: 0 0 20px rgba(255, 0, 60, 0.6) !important;
+            margin-bottom: 15px !important; 
+            margin-top: 20px !important;
+            object-fit: cover !important;
+            display: inline-block !important;
+        }
+
+        .tech-tag {
+            color: #ff003c; font-family: monospace; font-size: 1rem;
+            letter-spacing: 2px; margin-bottom: 10px; text-shadow: 0 0 5px rgba(255,0,60,0.5);
+        }
         
         h1 { font-size: 4.5rem; color: #fff; text-shadow: 2px 2px 15px rgba(255, 0, 60, 0.5); margin-bottom: 10px; }
         
         /* Cyberpunk Neon Red Subtitle */
-        .subtitle { font-size: 1.5rem; color: #ff003c; margin-bottom: 40px; text-shadow: 1px 1px 8px rgba(255, 0, 60, 0.6); }
+        .subtitle { 
+            font-size: 1.5rem; 
+            color: #e2e8f0; 
+            margin-bottom: 40px; 
+            text-shadow: 0 0 10px rgba(255, 0, 60, 0.9); 
+        }
 
-        /* The Scroll Down Button */
+        /* The Scroll Down Ghost Button */
         .scroll-down-btn {
-            display: inline-block; padding: 12px 30px; border: 2px solid white;
-            color: white; text-decoration: none; font-weight: bold; font-size: 1.1rem;
+            display: inline-block; padding: 12px 30px; 
+            border: 2px solid #ff003c; 
+            background: transparent; 
+            color: #fff; text-decoration: none; font-weight: bold; font-size: 1.1rem;
             border-radius: 30px; transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(255, 0, 60, 0.3);
             animation: bounce 2s infinite;
         }
-        .scroll-down-btn:hover { background: white; color: #1a0505; animation: none; box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); }
+        
+        .scroll-down-btn:hover { 
+            background: #ff003c; color: #fff; animation: none; 
+            box-shadow: 0 0 25px rgba(255, 0, 60, 0.8); 
+        }
 
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
@@ -51,11 +80,11 @@
             60% { transform: translateY(-7px); }
         }
 
-        /* --- 2. THE NEW SCROLL INTRO SECTION --- */
+        /* --- 2. THE SCROLL INTRO SECTION --- */
         .intro-section {
             min-height: 100vh; width: 100%;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            background: transparent; /* 👈 Change #1a0505 to transparent */
+            background: transparent; 
             padding: 40px 20px; text-align: center;
             position: relative; z-index: 5;
         }
@@ -68,7 +97,6 @@
 
         .highlight { color: #ff003c; font-weight: 600; text-shadow: 0 0 8px rgba(255, 0, 60, 0.4); }
 
-        /* Neon Red Cursor */
         .cursor {
             font-size: 2.5rem; color: #ff003c; animation: blink 0.8s infinite;
         }
@@ -85,10 +113,9 @@
         }
 
         .enter-btn:hover { box-shadow: 0 0 30px rgba(255, 0, 60, 0.8); transform: translateY(-5px); background: #ff3366; }
-
         .enter-btn.visible { opacity: 1; transform: translateY(0); }
 
-        /* --- 3. FLOATING FEEDBACK BUTTON --- */
+        /* --- 3. FLOATING FEEDBACK BUTTON & MODAL --- */
         .feedback-fab { position: fixed; bottom: 30px; left: 30px; background: #2a0808; color: #e2e8f0; border: 1px solid #ff003c; padding: 12px 20px; border-radius: 30px; font-weight: 600; cursor: pointer; z-index: 99; box-shadow: 0 5px 15px rgba(0,0,0,0.5); transition: all 0.3s ease; display: flex; align-items: center; gap: 8px; }
         .feedback-fab:hover { background: #ff003c; color: #fff; transform: translateY(-3px); box-shadow: 0 8px 25px rgba(255, 0, 60, 0.5); }
         
@@ -104,66 +131,20 @@
         .submit-btn { width: 100%; padding: 12px; background: #ff003c; color: #fff; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; box-shadow: 0 0 10px rgba(255, 0, 60, 0.4); }
         .submit-btn:hover { background: #fff; color: #ff003c; box-shadow: 0 0 20px #fff; }
         
-        @media (max-width: 600px) { h1 { font-size: 3rem; } #typewriter-text { font-size: 1.5rem; } }
         /* --- 📱 MOBILE OPTIMIZATION FIXES --- */
         @media (max-width: 768px) { 
-            /* 1. Fix the Full Screen Height Issue on Mobile */
             .welcome-entry, .intro-section { min-height: 100vh; min-height: 100dvh; }
-            
-            /* 2. Shrink the massive text to fit narrow screens */
-            h1 { font-size: 2.8rem; margin-top: -20px; } 
+            h1 { font-size: 2.8rem; margin-top: -10px; } 
             .subtitle { font-size: 1.1rem; padding: 0 15px; margin-bottom: 30px; }
-            
-            /* 3. Make the typewriter text readable without squishing */
             #typewriter-text { font-size: 1.3rem; line-height: 1.8; } 
             .cursor { font-size: 1.5rem; }
             .intro-text-container { padding: 0 10px; }
-            
-            /* 4. Resize buttons so they don't touch the edges */
             .enter-btn { padding: 12px 25px; font-size: 1rem; margin-top: 30px; }
             .scroll-down-btn { font-size: 0.9rem; padding: 10px 20px; }
-            
-            /* 5. Shrink the floating bug button so it doesn't block reading */
             .feedback-fab { bottom: 15px; left: 15px; padding: 10px 15px; font-size: 0.8rem; }
             .feedback-fab span { font-size: 1rem !important; }
-            
-            /* 6. Make the popup box fit perfectly */
             .modal-box { width: 95%; padding: 20px; }
-            h1.profile-name { font-size: 2rem; }
-            /* --- NEW ELEMENTS --- */
-        .intro-avatar {
-            width: 100px; height: 100px; border-radius: 50%;
-            border: 2px solid #ff003c; box-shadow: 0 0 20px rgba(255, 0, 60, 0.6);
-            margin-bottom: 15px; object-fit: cover;
-        }
-
-        .tech-tag {
-            color: #ff003c; font-family: monospace; font-size: 1rem;
-            letter-spacing: 2px; margin-bottom: 10px; text-shadow: 0 0 5px rgba(255,0,60,0.5);
-        }
-
-        /* --- UPGRADED CONTRAST & BUTTONS --- */
-        .subtitle { 
-            font-size: 1.5rem; 
-            color: #e2e8f0; /* Changed to crisp off-white for readability */
-            margin-bottom: 40px; 
-            text-shadow: 0 0 10px rgba(255, 0, 60, 0.9); /* Heavy red glow */
-        }
-
-        .scroll-down-btn {
-            display: inline-block; padding: 12px 30px; 
-            border: 2px solid #ff003c; /* Cyberpunk red border */
-            background: transparent; /* See-through "Ghost" style */
-            color: #fff; text-decoration: none; font-weight: bold; font-size: 1.1rem;
-            border-radius: 30px; transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(255, 0, 60, 0.3);
-            animation: bounce 2s infinite;
-        }
-        
-        .scroll-down-btn:hover { 
-            background: #ff003c; color: #fff; animation: none; 
-            box-shadow: 0 0 25px rgba(255, 0, 60, 0.8); 
-        }
+            .intro-avatar { width: 90px !important; height: 90px !important; margin-bottom: 10px !important; }
         }
     </style>
 </head>
@@ -175,7 +156,7 @@
         </video>
         <div class="welcome-overlay"></div>
         
-       <div class="welcome-content">
+        <div class="welcome-content">
             <img src="profilepic.png" alt="Shridhar" class="intro-avatar">
             <div class="tech-tag">&lt; Shridhar.ECE /&gt;</div>
             
@@ -183,8 +164,7 @@
             <p class="subtitle">To the digital workspace of a future engineer.</p>
             <a href="#intro" class="scroll-down-btn">Scroll Down 👇</a>
         </div>
-        
-    <div id="intro" class="intro-section">
+    </div> <div id="intro" class="intro-section">
         <div class="intro-text-container">
             <h2 id="typewriter-text"></h2><span class="cursor">|</span>
             <br>
@@ -208,7 +188,6 @@
     </div>
 
     <script>
-        // 1. The Typewriter Logic (Notice I added a span class='highlight' for extra punch!)
         const introText = "Hi, I am Shridhar. An Electronics & Communication Engineer specializing in IoT embedded systems, hardware design, and clean web development. ";
         let index = 0;
         const speed = 40; 
