@@ -190,6 +190,26 @@
             });
         });
     </script>
+    <button class="feedback-fab" onclick="openFeedbackModal()">
+        <span style="font-size: 1.2rem;">🐛</span> Report Issue
+    </button>
 
+    <div id="feedback-modal" class="modal-overlay">
+        <div class="modal-box">
+            <span class="close-btn" onclick="closeFeedbackModal()">&times;</span>
+            <h2 style="color: #38bdf8; margin-bottom: 15px;">Send Feedback / Report Issue</h2>
+            <p style="font-size: 0.9rem; color: #94a3b8; margin-bottom: 20px;">Found a bug or have a suggestion? Let me know!</p>
+            
+            <form id="feedback-form" action="https://formspree.io/f/xbdpvbgl" method="POST">
+                <input type="hidden" name="_subject" value="🚨 BUG REPORT / FEEDBACK from Portfolio">
+                
+                <input type="text" name="name" placeholder="Your Name (Optional)" class="modal-input">
+                <textarea name="message" placeholder="Describe the issue here..." required class="modal-input" rows="4"></textarea>
+                <button type="submit" class="submit-btn">Submit Report</button>
+            </form>
+            
+            <p id="feedback-success" style="display: none; color: #38bdf8; margin-top: 15px; font-weight: bold;">✅ Report sent successfully! Thank you.</p>
+        </div>
+    </div>
 </body>
 </html>
