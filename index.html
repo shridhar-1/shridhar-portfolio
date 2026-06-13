@@ -130,6 +130,40 @@
             /* 6. Make the popup box fit perfectly */
             .modal-box { width: 95%; padding: 20px; }
             h1.profile-name { font-size: 2rem; }
+            /* --- NEW ELEMENTS --- */
+        .intro-avatar {
+            width: 100px; height: 100px; border-radius: 50%;
+            border: 2px solid #ff003c; box-shadow: 0 0 20px rgba(255, 0, 60, 0.6);
+            margin-bottom: 15px; object-fit: cover;
+        }
+
+        .tech-tag {
+            color: #ff003c; font-family: monospace; font-size: 1rem;
+            letter-spacing: 2px; margin-bottom: 10px; text-shadow: 0 0 5px rgba(255,0,60,0.5);
+        }
+
+        /* --- UPGRADED CONTRAST & BUTTONS --- */
+        .subtitle { 
+            font-size: 1.5rem; 
+            color: #e2e8f0; /* Changed to crisp off-white for readability */
+            margin-bottom: 40px; 
+            text-shadow: 0 0 10px rgba(255, 0, 60, 0.9); /* Heavy red glow */
+        }
+
+        .scroll-down-btn {
+            display: inline-block; padding: 12px 30px; 
+            border: 2px solid #ff003c; /* Cyberpunk red border */
+            background: transparent; /* See-through "Ghost" style */
+            color: #fff; text-decoration: none; font-weight: bold; font-size: 1.1rem;
+            border-radius: 30px; transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(255, 0, 60, 0.3);
+            animation: bounce 2s infinite;
+        }
+        
+        .scroll-down-btn:hover { 
+            background: #ff003c; color: #fff; animation: none; 
+            box-shadow: 0 0 25px rgba(255, 0, 60, 0.8); 
+        }
         }
     </style>
 </head>
@@ -141,13 +175,15 @@
         </video>
         <div class="welcome-overlay"></div>
         
-        <div class="welcome-content">
+       <div class="welcome-content">
+            <img src="profilepic.png" alt="Shridhar" class="intro-avatar">
+            <div class="tech-tag">&lt; Shridhar.ECE /&gt;</div>
+            
             <h1>Welcome.</h1>
             <p class="subtitle">To the digital workspace of a future engineer.</p>
             <a href="#intro" class="scroll-down-btn">Scroll Down 👇</a>
         </div>
-    </div>
-
+        
     <div id="intro" class="intro-section">
         <div class="intro-text-container">
             <h2 id="typewriter-text"></h2><span class="cursor">|</span>
