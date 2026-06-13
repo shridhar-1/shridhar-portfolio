@@ -104,6 +104,32 @@
         .submit-btn:hover { background: #fff; color: #ff003c; box-shadow: 0 0 20px #fff; }
         
         @media (max-width: 600px) { h1 { font-size: 3rem; } #typewriter-text { font-size: 1.5rem; } }
+        /* --- 📱 MOBILE OPTIMIZATION FIXES --- */
+        @media (max-width: 768px) { 
+            /* 1. Fix the Full Screen Height Issue on Mobile */
+            .welcome-entry, .intro-section { min-height: 100vh; min-height: 100dvh; }
+            
+            /* 2. Shrink the massive text to fit narrow screens */
+            h1 { font-size: 2.8rem; margin-top: -20px; } 
+            .subtitle { font-size: 1.1rem; padding: 0 15px; margin-bottom: 30px; }
+            
+            /* 3. Make the typewriter text readable without squishing */
+            #typewriter-text { font-size: 1.3rem; line-height: 1.8; } 
+            .cursor { font-size: 1.5rem; }
+            .intro-text-container { padding: 0 10px; }
+            
+            /* 4. Resize buttons so they don't touch the edges */
+            .enter-btn { padding: 12px 25px; font-size: 1rem; margin-top: 30px; }
+            .scroll-down-btn { font-size: 0.9rem; padding: 10px 20px; }
+            
+            /* 5. Shrink the floating bug button so it doesn't block reading */
+            .feedback-fab { bottom: 15px; left: 15px; padding: 10px 15px; font-size: 0.8rem; }
+            .feedback-fab span { font-size: 1rem !important; }
+            
+            /* 6. Make the popup box fit perfectly */
+            .modal-box { width: 95%; padding: 20px; }
+            h1.profile-name { font-size: 2rem; }
+        }
     </style>
 </head>
 <body>
