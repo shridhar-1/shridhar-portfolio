@@ -83,14 +83,57 @@
         .cert-card:hover { transform: scale(1.05); border-color: #38bdf8; animation-play-state: paused; }
         @keyframes slideCerts { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-100% + 800px)); } }
 
-        /* ===========================
+       /* ===========================
            CONTACT SECTION
         =========================== */
         .contact-btn { display: inline-block; background: #0077b5; color: white; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: bold; margin-top: 20px; transition: 0.3s; }
         .contact-btn:hover { background: #fff; color: #0077b5; box-shadow: 0 0 15px #fff; }
-        #contact { text-align: center; padding: 40px; }
-        #contact input, #contact textarea { width: 80%; margin: 10px; padding: 10px; }
-        #contact button { padding: 10px 20px; background: #007bff; color: white; border: none; cursor: pointer; }
+        
+        /* Put the whole contact section in a sleek glass box */
+        #contact { 
+            text-align: center; padding: 40px; 
+            background: rgba(15, 23, 42, 0.6); 
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+            border-radius: 15px; margin-top: 30px; 
+            backdrop-filter: blur(10px); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        
+        #contact h2 { border-bottom: none; margin-bottom: 10px; }
+        
+        /* The Premium Glass Inputs */
+        #contact input, #contact textarea { 
+            width: 100%; max-width: 600px; margin: 12px auto; padding: 15px; 
+            background: rgba(0, 0, 0, 0.4); 
+            border: 1px solid rgba(56, 189, 248, 0.2); 
+            color: white; border-radius: 12px; font-family: 'Poppins', sans-serif; 
+            transition: all 0.3s ease; display: block;
+        }
+
+        #contact input::placeholder, #contact textarea::placeholder {
+            color: #64748b;
+        }
+        
+        /* The Neon Glow when typing */
+        #contact input:focus, #contact textarea:focus { 
+            outline: none; border-color: #38bdf8; 
+            background: rgba(0,0,0,0.6); 
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.3); 
+        }
+        
+        /* The Gradient Submit Button */
+        #contact button { 
+            padding: 15px 40px; margin-top: 15px;
+            background: linear-gradient(45deg, #0ea5e9, #38bdf8);
+            color: #fff; border: none; border-radius: 30px; 
+            font-weight: 700; font-size: 1.1rem; cursor: pointer; transition: 0.3s ease; 
+            box-shadow: 0 5px 15px rgba(56, 189, 248, 0.4); letter-spacing: 1px;
+        }
+        
+        #contact button:hover { 
+            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.7); 
+            transform: translateY(-2px); filter: brightness(1.1); 
+        }
 
         /* ===========================
            STYLISH FEEDBACK MODAL
